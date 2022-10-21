@@ -1,3 +1,3 @@
 module.exports = {
-    auth: require('./auth.js')
+    account: require('./account.js')
 }

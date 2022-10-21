@@ -15,6 +15,6 @@ app.get('/', (req, res) => {
     res.send('Hello, you have reached the Greatest Books backend')
 })
 
-app.use('/auth', controllers.auth)
+app.use('/account', controllers.account)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))
