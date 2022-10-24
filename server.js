@@ -16,5 +16,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/account', controllers.account)
+app.use('/book', controllers.book)
 
 app.listen(PORT, () => console.log('listening on PORT ' + PORT))

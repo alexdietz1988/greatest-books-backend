@@ -1,3 +1,4 @@
 module.exports = {
-    account: require('./account.js')
+    account: require('./account'),
+    book: require('./book')
 }
