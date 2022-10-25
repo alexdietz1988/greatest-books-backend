@@ -5,6 +5,7 @@ const db = require('../db')
 // Get all books of specified genre and date range
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body)
         const values = [
             req.body.genre,
             req.body.dates.start,
@@ -17,13 +18,13 @@ router.post('/', async (req, res) => {
             query += ' AND author = $4'
         }
 
-        if (req.body.queryString !== '') {
-            values.push(req.body.queryString)
-            query += `AND title ILIKE %$${values.length}% OR author ILIKE %$${values.length}%`
+        if (req.body.query !== '') {
+            values.push(`%${req.body.query}%`)
+            query += ` AND (title ILIKE $${values.length} OR author ILIKE $${values.length})`
         }
 
         query += ' LIMIT 100;'
-
+        console.log(query)
         const response = await db.query(query, values)
         return res.json(response.rows)
     } catch (error) {
